@@ -56,4 +56,5 @@ services:
       - ./letsencrypt:/etc/letsencrypt
     depends_on:
       - nginx_https
+```
 > **Don't forget to add your application's container.**
