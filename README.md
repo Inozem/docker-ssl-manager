@@ -68,3 +68,29 @@ docker-compose up -d
 ```
 This will start all services, automatically install SSL certificates, and schedule their renewal every two months.
 
+
+## Configuring Certificate Renewal Schedule
+By default, the certificates are renewed on the 1st of every two months. However, you can modify the schedule by specifying different values for the variables in your `docker-compose.yml`.
+
+### Example: Setting the Schedule to Every 15 Days
+To change the schedule to renew the certificates every 15 days, adjust your `docker-compose.yml` like this:
+
+```yaml
+docker_ssl_manager:
+  image: inozem/docker_ssl_manager:v1.0
+  environment:
+    EMAIL: "example_email@gmail.com"
+    DOMAIN: "example_docker.com"
+    RENEW_MINUTE: "0"
+    RENEW_SECOND: "0"
+    RENEW_HOUR: "3"
+    RENEW_DAY: "15"
+    RENEW_DAY_OF_WEEK: "*"
+    RENEW_MONTH: "*"
+  volumes:
+    - /var/run/docker.sock:/var/run/docker.sock
+    - ./certbot_data:/var/www/certbot
+    - ./letsencrypt:/etc/letsencrypt
+  depends_on:
+    - nginx_https
+```
