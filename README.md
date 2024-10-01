@@ -69,6 +69,7 @@ docker-compose up -d
 This will start all services, automatically install SSL certificates, and schedule their renewal every two months.
 
 
+
 ## Configuring Certificate Renewal Schedule
 By default, the certificates are renewed on the 1st of every two months. However, you can modify the schedule by specifying different values for the variables in your `docker-compose.yml`.
 
@@ -94,3 +95,30 @@ docker_ssl_manager:
   depends_on:
     - nginx_https
 ```
+### Explanation of Possible Environment Variable Values
+
+- **`EMAIL`**: Email address where Certbot will send notifications about the certificate status.
+- **`DOMAIN`**: Domain for which SSL certificates should be generated and renewed.
+- **`RENEW_MINUTE`**: Specifies the minute when the renewal should start.  
+  - **Values**: From `0` to `59`. Default is `0` (start of the hour).
+- **`RENEW_SECOND`**: Specifies the second when the renewal should start.  
+  - **Values**: From `0` to `59`. Default is `0`.
+- **`RENEW_HOUR`**: Specifies the hour when the certificate renewal task should run.  
+  - **Values**: From `0` to `23`. Default is `3` (3:00 AM).
+- **`RENEW_DAY`**: Specifies the day of the month when the renewal will occur.  
+  - **Values**: From `1` to `31`, or `*` (any day). Default is `1`.
+- **`RENEW_DAY_OF_WEEK`**: Specifies the day of the week when the renewal will occur.  
+  - **Values**: From `0` (Sunday) to `6` (Saturday), or `*` to run the task on any day of the week.
+- **`RENEW_MONTH`**: Specifies the month when the renewal will occur.  
+  - **Values**: From `1` to `12`, `*` for any month, or something like `*/2` to run every two months.
+
+### Example Variable Configurations
+
+- **To run the task every day**:  
+  - Set `RENEW_DAY="*"` and `RENEW_DAY_OF_WEEK="*"`
+  
+- **To run the task only on Mondays**:  
+  - Set `RENEW_DAY_OF_WEEK="1"`
+
+- **To run the task every 3 months**:  
+  - Set `RENEW_MONTH="*/3"`
