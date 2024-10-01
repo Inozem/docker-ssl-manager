@@ -6,7 +6,7 @@ This plugin automatically renews SSL certificates using Certbot and restarts the
 
 ### Step 1: Docker Compose Setup
 
-1. Сreate a Docker Compose file with the required structure. Here is an example:
+Сreate a Docker Compose file with the required structure. Here is an example:
 
 ```yaml
 services:
@@ -58,3 +58,13 @@ services:
       - nginx_https
 ```
 > **Don't forget to add your application's container. You'll also need to add the Let's Encrypt and Nginx files. You can copy the Let's Encrypt files and find examples of Nginx files from [this repository](https://github.com/Inozem/letsencrypt-nginx-docker-compose).**
+
+
+### Step 2: Running the Setup
+Once all containers and configurations are in place, simply run:
+
+```bash
+docker-compose up -d
+```
+This will start all services, automatically install SSL certificates, and schedule their renewal every two months.
+
