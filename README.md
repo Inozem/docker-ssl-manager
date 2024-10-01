@@ -57,4 +57,4 @@ services:
     depends_on:
       - nginx_https
 ```
-> **Don't forget to add your application's container.**
+> **Don't forget to add your application's container. You'll also need to add the Let's Encrypt and Nginx files. You can copy the Let's Encrypt files and find examples of Nginx files from [this repository](https://github.com/Inozem/letsencrypt-nginx-docker-compose).**
