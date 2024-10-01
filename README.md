@@ -14,7 +14,7 @@ services:
     image: nginx:alpine
     container_name: nginx_http
     volumes:
-      - ./nginx/nginx.prod.http.conf:/etc/nginx/conf.d/default.conf
+      - ./nginx/nginx.http.conf:/etc/nginx/conf.d/default.conf
       - ./certbot_data:/var/www/certbot
     ports:
       - "80:80"
@@ -36,7 +36,7 @@ services:
     image: nginx:alpine
     container_name: nginx_https
     volumes:
-      - ./nginx/nginx.prod.https.conf:/etc/nginx/conf.d/default.conf
+      - ./nginx/nginx.https.conf:/etc/nginx/conf.d/default.conf
       - ./nginx/proxy_params:/etc/nginx/proxy_params
       - ./letsencrypt:/etc/letsencrypt
     ports:
@@ -56,3 +56,4 @@ services:
       - ./letsencrypt:/etc/letsencrypt
     depends_on:
       - nginx_https
+> **Don't forget to add your application's container.**
