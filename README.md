@@ -60,7 +60,11 @@ services:
 > **Don't forget to add your application's container. You'll also need to add the Let's Encrypt and Nginx files. You can copy the Let's Encrypt files and find examples of Nginx files from [this repository](https://github.com/Inozem/letsencrypt-nginx-docker-compose).**
 
 
-### Step 2: Running the Setup
+### Step 2: Adding .env file
+In the same directory, add an .env file with the variables EMAIL and DOMAIN to configure the certificate.
+
+
+### Step 3: Running the Setup
 Once all containers and configurations are in place, simply run:
 
 ```bash
