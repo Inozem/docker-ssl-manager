@@ -61,7 +61,11 @@ services:
 
 
 ### Step 2: Adding .env file
-In the same directory, add an .env file with the variables EMAIL and DOMAIN to configure the certificate.
+In the same directory, add an .env file with the variables EMAIL and DOMAIN to configure the certificate:
+```.env
+EMAIL=example@gmail.com
+DOMAIN=example.com
+```
 
 
 ### Step 3: Running the Setup
