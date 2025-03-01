@@ -48,8 +48,8 @@ services:
   docker_ssl_manager:
     image: inozem/docker_ssl_manager:v1.0
     environment:
-      EMAIL: "example_email@gmail.com"
-      DOMAIN: "example_docker.com"
+      EMAIL: ${EMAIL}
+      DOMAIN: ${DOMAIN}
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - ./certbot_data:/var/www/certbot
